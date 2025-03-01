@@ -1,0 +1,21 @@
+﻿server:
+  port: 8081
+
+spring:
+  application:
+    name: search-microservice
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+elasticsearch:
+  host: unir-cluster-3846090342.us-east-1.bonsaisearch.net
+  credentials:
+    user: icknna2sqv
+    password: g46svi8kgm
+
+logging:
+  level:
+    tracer: TRACE

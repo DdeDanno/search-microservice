@@ -85,4 +85,9 @@ public class MovieController {
         return ResponseEntity.status(HttpStatus.OK).body(updatedMovie);
     }
 
+    @GetMapping("/elastic/movies/{movieId}")
+    public ResponseEntity<Movie> getMovie(@PathVariable String movieId) {
+        Movie movie = movieService.getMovieById(movieId);
+        return ResponseEntity.status(HttpStatus.OK).body(movie);
+    }
 }

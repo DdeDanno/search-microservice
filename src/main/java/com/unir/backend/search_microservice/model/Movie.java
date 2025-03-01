@@ -45,7 +45,13 @@ public class Movie {
     @Field(type = FieldType.Keyword, name = "genre")
     private String genre;
 
-    public Movie(String name, String director, Integer yearOfPublication, String synopsis, String reviews, Integer duration, String image, String trailer, String genre) {
+    @Field(type = FieldType.Double, name = "rentPrice")
+    private Double rentPrice;
+
+    @Field(type = FieldType.Double, name = "buyPrice")
+    private Double buyPrice;
+
+    public Movie(String name, String director, Integer yearOfPublication, String synopsis, String reviews, Integer duration, String image, String trailer, String genre, Double rentPrice, Double buyPrice) {
         this.id = UUID.randomUUID().toString();
         this.name = name;
         this.director = director;
@@ -56,6 +62,8 @@ public class Movie {
         this.image = image;
         this.trailer = trailer;
         this.genre = genre;
+        this.rentPrice = rentPrice;
+        this.buyPrice = buyPrice;
     }
 
     public static Movie.MovieBuilder builder() {

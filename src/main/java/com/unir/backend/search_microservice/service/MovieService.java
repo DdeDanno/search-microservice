@@ -20,4 +20,6 @@ public interface MovieService {
     List<String> searchMovieByDirector(String director);
 
     Movie updateMovie(String id, Movie movie);
+
+    Movie getMovieById(String id);
 }

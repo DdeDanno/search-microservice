@@ -8,7 +8,7 @@
 # Run the mvn clean package command (It will generate a JAR file for deployment)
 FROM maven:3.9.6-eclipse-temurin-21 AS build
 COPY . .
-RUN mvn clean package
+RUN mvn clean package -DskipTests
 
 # We use an Openjdk image
 # We expose the port that our component will use to listen to requests

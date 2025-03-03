@@ -1,11 +1,15 @@
-# Dockerfile para el microservicio con Elasticsearch y Java 17
-FROM openjdk:17-jdk-slim
+# Use the Eclipse temurin alpine official image
+# https://hub.docker.com/_/eclipse-temurin
+FROM eclipse-temurin:21-jdk-alpine
 
-# Copiar el archivo JAR desde el directorio 'target' al contenedor
-COPY target/search-microservice-0.0.1-SNAPSHOT.jar search-microservice.jar
+# Create and change to the app directory.
+WORKDIR /app
 
-# Definir el comando de entrada para ejecutar el microservicio
-ENTRYPOINT ["java", "-jar", "search-microservice.jar"]
+# Copy local code to the container image.
+COPY . ./
 
-# Exponer el puerto 8081 (o el puerto configurado en tu aplicación)
-EXPOSE 8080
+# Build the app.
+RUN ./mvnw -DoutputFile=target/mvn-dependency-list.log -B -DskipTests clean dependency:list install
+
+# Run the app by dynamically finding the JAR file in the target directory
+CMD ["sh", "-c", "java -jar target/*.jar"]

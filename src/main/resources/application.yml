@@ -1,21 +1,28 @@
-﻿server:
-  port: 8081
+## Configuración del servidor
+server:
+  port: ${SERVER_PORT:8081}
 
+## Configuración de la aplicación Spring Boot
 spring:
   application:
-    name: search-microservice
+    name: ${SPRING_APPLICATION_NAME:search-microservice}
+  config:
+    import: optional:file:.env[.properties]
 
+## Configuración del cliente de Eureka
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: ${EUREKA_URL}
 
+## Configuración de Elasticsearch con Bonsai
 elasticsearch:
-  host: unir-cluster-3846090342.us-east-1.bonsaisearch.net
+  host: ${ELASTICSEARCH_HOST}
   credentials:
-    user: icknna2sqv
-    password: g46svi8kgm
+    user: ${ELASTICSEARCH_USER}
+    password: ${ELASTICSEARCH_PWD}
 
+## Configuración de logging
 logging:
   level:
-    tracer: TRACE
+    tracer: ${LOGGING_LEVEL_TRACER:TRACE}

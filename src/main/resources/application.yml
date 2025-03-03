@@ -1,6 +1,6 @@
 ## Configuración del servidor
 server:
-  port: ${SERVER_PORT:8081}
+  port: ${SERVER_PORT:8080}
 
 ## Configuración de la aplicación Spring Boot
 spring:
@@ -13,7 +13,12 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: ${EUREKA_URL}
+      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka}
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    prefer-ip-address: true
+    hostname: ${HOSTNAME:localhost}
 
 ## Configuración de Elasticsearch con Bonsai
 elasticsearch:

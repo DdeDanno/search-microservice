@@ -1,11 +1,11 @@
 ## Configuración del servidor
 server:
-  port: ${SERVER_PORT:8080}
+  port: ${SERVER_PORT}
 
 ## Configuración de la aplicación Spring Boot
 spring:
   application:
-    name: ${SPRING_APPLICATION_NAME:search-microservice}
+    name: ${SPRING_APPLICATION_NAME}
   config:
     import: optional:file:.env[.properties]
 
@@ -13,12 +13,12 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka}
+      defaultZone: ${EUREKA_URL}
     register-with-eureka: true
     fetch-registry: true
   instance:
     prefer-ip-address: false
-    hostname: ${HOSTNAME:localhost}
+    hostname: ${HOSTNAME}
 
 ## Configuración de Elasticsearch con Bonsai
 elasticsearch:
@@ -30,4 +30,4 @@ elasticsearch:
 ## Configuración de logging
 logging:
   level:
-    tracer: ${LOGGING_LEVEL_TRACER:TRACE}
+    tracer: ${LOGGING_LEVEL_TRACER}

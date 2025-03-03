@@ -14,8 +14,6 @@ eureka:
   client:
     service-url:
       defaultZone: ${EUREKA_URL}
-    register-with-eureka: true
-    fetch-registry: true
 
 ## Configuración de Elasticsearch con Bonsai
 elasticsearch:
